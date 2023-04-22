@@ -15,15 +15,15 @@ class B(Button):
         Button.__init__(self, parent, **config)
         self.startstop = 0
         self.config(command = self.changebutton)
-        self.place(x = 160, y = 140)
+        self.place(x = 185, y = 140)
 
     def startshowcards(self):
         self.lbl = Label(text = " ", fg = "yellow", bg = "black")
-        self.lbl.place(x = 90, y = 60)
+        self.lbl.place(x = 140, y = 60)
         while self.startstop == 1:
             try:
                 word = random.choice(wordslist)
-                self.lbl.configure(text = str(word))
+                self.lbl.configure(text = str(word.replace(":", "  ")))
                 self.after(5000)
                 self.update()
             except TclError:
@@ -43,7 +43,7 @@ def main():
     root = Tk()
     B(text = "show")
     root.title("Flash Cards")
-    root.geometry("400x175")
+    root.geometry("450x180")
     root.configure(bg = "black")
     root.mainloop()
 
